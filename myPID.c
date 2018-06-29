@@ -40,9 +40,9 @@ unsigned char IncPID_SetPID(IncPID_TypeDef *myPID,double kp,double ki,double kd)
 
 double  IncPID_Compute(IncPID_TypeDef *myPID,double NextPoint)
 {
-  double Error;
+  	double Error;
 	double output=0;
-  Error = myPID->SetPoint - NextPoint;
+  	Error = myPID->SetPoint - NextPoint;
 	if(myPID->ControlAccuracy>0)
 	{
 		if((Error<=myPID->ControlAccuracy )&& (Error >= -myPID->ControlAccuracy))
@@ -52,7 +52,7 @@ double  IncPID_Compute(IncPID_TypeDef *myPID,double NextPoint)
 	if(output> myPID->UpLimits)  output=myPID->UpLimits;
 	else if(output< myPID->DownLimits) output=myPID->DownLimits;
 	myPID->PrevError=myPID->LastError;                  
-  myPID->LastError=Error;
+  	myPID->LastError=Error;
 	return output;
 }
 
